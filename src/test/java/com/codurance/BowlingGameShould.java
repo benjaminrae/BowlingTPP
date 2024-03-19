@@ -1,31 +1,20 @@
 package com.codurance;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BowlingGameShould {
-
-    @Test
+    @ParameterizedTest(name = "{0} pin(s) in a single roll should score {0}")
+    @ValueSource(ints = {0, 1, 2})
     public void
-    score_0_for_0_pins_rolled() {
+    score_a_single_roll(int pins) {
         BowlingGame bowlingGame = new BowlingGame();
 
-        int pins = 0;
         bowlingGame.roll(pins);
 
-        assertEquals(0, bowlingGame.score());
+        assertEquals(pins, bowlingGame.score());
     }
-
-    @Test
-    public void
-    score_1_for_1_pin_rolled() {
-        BowlingGame bowlingGame = new BowlingGame();
-
-        int pins = 1;
-        bowlingGame.roll(pins);
-
-        assertEquals(1, bowlingGame.score());
-    }
-
 }

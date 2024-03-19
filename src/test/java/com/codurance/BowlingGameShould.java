@@ -17,4 +17,15 @@ class BowlingGameShould {
         assertEquals(0, bowlingGame.score());
     }
 
+    @Test
+    public void
+    score_1_for_1_pin_rolled() {
+        BowlingGame bowlingGame = new BowlingGame();
+
+        int pins = 1;
+        bowlingGame.roll(pins);
+
+        assertEquals(1, bowlingGame.score());
+    }
+
 }
